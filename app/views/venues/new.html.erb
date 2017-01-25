@@ -1,0 +1,19 @@
+<%= form_for @venue, :html => { :multipart => true } do |f| %>
+	<%= f.label :venue_title, "Venue's Name" %>
+	<%= f.text_field :venue_title %><br /><br />
+
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %><br /><br />
+
+	<%= f.label :address %>
+	<%= f.text_field :address %><br /><br />
+
+	<%= f.label :venue_describe, "Description" %>
+	<%= f.text_area :venue_describe, :placeholder => "Tell us about your establishment." %><br /> <br />
+
+	<%= f.label :contact, "Contact Info" %>
+	<%= f.text_field :contact %>
+
+	<%= f.submit %>
+
+<% end %>

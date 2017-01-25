@@ -1,7 +1,24 @@
 class VenuesController < ApplicationController
-
-	def index
+	def new
 		@venue = Venue.new
+	end
+	def create
+		@venue = current_user.venues.new(venue_params)
+
+		if @venue.save
+			puts @venue.inspect
+			redirect_to @venue, notice: "Venue posted!"
+		else
+			@alert =  "There was an issue posting your venue! #{@venue.errors.full_messages}"
+			render "home/index"
+		end
+	end
+	def index	
+  		@venues = if params[:search].present?
+	   		Venue.near(params[:search], 50)
+	  	else
+	    	Venue.all
+	  	end
 	end
 	def avatar
 		if params[:user]
@@ -13,4 +30,13 @@ class VenuesController < ApplicationController
 			notice: "No Avatar Found"
 		end
 	end
+	def show
+		@venue = Venue.find(params[:id])
+	end
+
+	private
+
+		def venue_params
+			params.require(:venue).permit(:address, :venue_title, :venue_describe, :latitude, :longitude, :contact, :avatar, :user_id)
+		end
 end
