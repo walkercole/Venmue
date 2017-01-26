@@ -48,6 +48,12 @@ class VenuesController < ApplicationController
 			redirect_to :back
 		end		
 	end
+	def destroy
+	  @venue = Venue.find(params[:id])
+	  @venue.destroy
+	 	flash[:notice] = "Post Deleted!"
+	  redirect_to "/venues"		
+	end
 
 	private
 

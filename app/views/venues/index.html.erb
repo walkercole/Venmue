@@ -1,15 +1,21 @@
 
 <%= form_tag venues_path, :method => :get do %>
 	<p>
-		<%= text_field_tag :search, params[:search] %>
-		<%= submit_tag "Search Near", :name => nil %>
+	<div class="ui search">
+		<div class="ui icon input">
+				<%= text_field_tag :search, params[:search], :class => "prompt", :placeholder => "Search by area" %>
+				<i class="search icon"></i>
+			<div class="results"></div>
+		</div>
+	</div><br/><br/>
+
 	</p>
 <% end %>
 <p>
 	<strong>Latest Available Venues:</strong>
 		<% @venues.all.last(10).each do |v|%>
 		<ul>
-			<li><%= image_tag v.avatar :thumb %> <strong><%= v.venue_title + ", " %></strong> <%= link_to "show", venue_path(v.id) %></li>
+			<li><strong><%= v.venue_title %></strong><br /><%= v.address %><br /><br /><%= image_tag v.avatar :thumb %> <br /> <%= link_to "View Details >", venue_path(v.id) %></li>
 		</ul>
 		<% end %>
 </p>

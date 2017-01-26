@@ -1,4 +1,4 @@
-
+<h3> <%= @venue.venue_title %> </h3>
 <p>
 	<strong>Venue Name:</strong>
 	<%= @venue.venue_title %><br /><br />
@@ -34,9 +34,15 @@
 	  <% if current_user == @venue.user %>
 	  <button><%= link_to 'Delete Review', [review.venue, review],
 	               method: :delete,
-	               data: { confirm: 'Are you sure?' } %></button> <% end %>
+	               data: { confirm: 'Are you sure?' } %></button><br/><br/><br/>
+       <% end %>
+       <% end %>
+       <% if current_user == @venue.user %>
+       <button><%= link_to 'Delete Venue', venue_path, 
+       				method: :delete,
+              		data: { confirm: 'Are you sure?' } %></button> 
+       <% end %>
 	</p>
-	<% end %>
 	<% if current_user %>
 		<h2>Add a review:</h2>
 				<%= form_for([@venue, @venue.reviews.build]) do |f| %>
