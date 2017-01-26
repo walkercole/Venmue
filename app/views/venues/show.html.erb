@@ -12,7 +12,11 @@
 	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@venue.latitude}%2C#{@venue.longitude}" %><br /><br />
 
 	<strong>Contact Info: </strong>
-	<%= @venue.contact %>
+	<%= @venue.contact %><br /><br/ >
+
+	<% if current_user == @venue.user %>
+	<button><%= link_to "Edit Venue", edit_venue_path %></button>
+	<% end %>
 
 	<h2>Reviews</h2>
 		<% @venue.reviews.each do |review| %>
@@ -33,20 +37,20 @@
 	               data: { confirm: 'Are you sure?' } %></button> <% end %>
 	</p>
 	<% end %>
-
+	<% if current_user %>
 		<h2>Add a review:</h2>
-	<%= form_for([@venue, @venue.reviews.build]) do |f| %>
-	  <p>
-	    <%= f.label :reviewer %><br>
-	    <%= f.text_field :reviewer %>
-	  </p>
-	  <p>
-	    <%= f.label :body %><br>
-	    <%= f.text_area :body %>
-	  </p>
-	  <p>
-	    <%= f.submit %>
-	  </p>
+				<%= form_for([@venue, @venue.reviews.build]) do |f| %>
+		  <p>
+		    <%= f.label :reviewer %><br>
+		    <%= f.text_field :reviewer %>
+		  </p>
+		  <p>
+		    <%= f.label :body %><br>
+		    <%= f.text_area :body %>
+		  </p>
+		  <p>
+		    <%= f.submit %>
+		  </p>
+		<% end %>
 	<% end %>
-
 </p>

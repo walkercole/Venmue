@@ -6,3 +6,5 @@ List your venue or find one for your event or show!
 * Geocoder
 * Paperclip
 * Devise
+* Google API
+* Geocoder

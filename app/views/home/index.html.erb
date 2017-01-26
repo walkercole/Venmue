@@ -1,2 +1,6 @@
 <strong>Venues Near Your Location!</strong><br /><br />
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+<% my_url = "http://maps.google.com/maps/api/staticmap?center=Washington, DC&size=450x300&sensor=false&zoom=15" %>
+<% @locations.each do |location| %> 
+<% my_url += "&markers=#{location.latitude}%2C#{location.longitude}" %>    
+<% end %>
+<%= image_tag my_url %>

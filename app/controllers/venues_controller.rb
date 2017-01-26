@@ -33,6 +33,21 @@ class VenuesController < ApplicationController
 	def show
 		@venue = Venue.find(params[:id])
 	end
+	def edit
+		@venue = Venue.find(params[:id])
+	end
+	def update
+
+		@venue = Venue.find(params[:id])
+
+		if @venue.update(venue_params)
+			redirect_to :back, notice: "Date Saved!"
+
+		else
+			@alert =  "Date could not be saved! #{@venue.errors.full_messages}"
+			redirect_to :back
+		end		
+	end
 
 	private
 

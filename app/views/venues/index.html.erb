@@ -6,8 +6,10 @@
 	</p>
 <% end %>
 <p>
-	<strong>Available Venues:</strong>
-		<% @venues.each do |v|%>
-			<%= v.venue_title + ", " %> <%= link_to "show", venue_path(v.id) %>
+	<strong>Latest Available Venues:</strong>
+		<% @venues.all.last(10).each do |v|%>
+		<ul>
+			<li><%= image_tag v.avatar :thumb %> <strong><%= v.venue_title + ", " %></strong> <%= link_to "show", venue_path(v.id) %></li>
+		</ul>
 		<% end %>
 </p>
