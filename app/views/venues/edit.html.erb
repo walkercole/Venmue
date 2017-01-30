@@ -1,24 +1,35 @@
-<h2> Edit Venue Info </h2>
-
-<%= form_for @venue, :html => { :multipart => true } do |f| %>
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %><br /><br />
+<div id="newform">  
+  <h2 class="ui dividing icon header">
+    <i id="editicon" class="edit icon"></i>
+    Edit Venue Info
+  </h2>
+  <div class="ui form">
+  <%= form_for @venue, :html => { :multipart => true } do |f| %>
+    <div class="two fields">
+      <div class="inline four wide field">  
+        <%= f.label :venue_title, "Venue's Name" %><br/>
+        <%= f.text_field :venue_title, :placeholder => "Venue's Name" %><br/><br/>
+      </div>
+      <div class="inline field">
+          <%= f.label :avatar %><br/>
+          <%= f.file_field :avatar %><br/><br/>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="inline four wide field">
+        <%= f.label :address %><br/>
+        <%= f.text_field :address, :placeholder => "Address" %><br/><br/>
+      </div>
+      <div class="inline four wide field">
+        <%= f.label :contact, "Contact Info" %><br/>
+        <%= f.text_field :contact, :placeholder => "Contact" %>
+      </div>
+    </div>
+    <div class="inline six wide field">
+      <%= f.label :venue_describe, "Description" %><br/>
+      <%= f.text_area :venue_describe, :placeholder => "Tell us about your establishment." %><br/><br/>
+    </div>
+    <%= f.submit 'Update Venue', :class => "ui button" %>
+  <% end %>
   </div>
-
-  <div class="field">
-  <%= f.label :venue_title %><br />
-  <%= f.text_field :venue_title %><br /><br />
-  </div>
-
-  <div class="field">
-  <%= f.label :venue_describe %><br />
-  <%= f.text_area :venue_describe %><br /><br />
-
-  <div class="field">
-  <%= f.label :contact %><br />
-  <%= f.text_field :contact %><br /><br />
-  <%= f.hidden_field :venue_id, value: @venue.id %>
-
-  <%= f.submit %>
-<% end %>
+</div>

@@ -58,12 +58,36 @@
 .headerDivider {
      border-left:.6px solid #DEDEDF; 
      border-right:.6px solid #DEDEDF; 
-     height:480px;
+     height:470px;
      position:absolute;
      right:50%;
-     top:83%; 
+     top:520px; 
      margin-bottom: 1%;
      opacity: .95;
+}
+#newform {
+	margin-left:30%;
+	margin-top: 5%;
+	margin-bottom: 1%;
+}
+#editicon {
+	float:right;
+	margin-left: 25px;
+}
+#login {
+	display: inline-block;
+	margin-left:35%;
+	width:400px;
+	float:center;
+	position:absolute;
+}
+.flexbox{
+  display: flex;
+  flex-flow: column wrap;
+  height: 950px;
+  width: 80%;
+  margin: 5% 5% 5% 15%;
+  align-items: center;
 }
 
 @-webkit-keyframes cf4FadeInOut {

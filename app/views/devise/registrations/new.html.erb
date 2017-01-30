@@ -1,0 +1,43 @@
+<div id="login">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h2 class="ui teal icon header">
+        <i class="circular laptop icon"></i>
+        Sign up
+      </h2>
+      <div class="ui large form">
+        <div class="ui stacked segment">
+          <%= form_for(resource, as: resource_name,  url: registration_path(resource_name)) do |f| %>
+            <div class="field">
+              <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.email_field :email, :placeholder => "E-mail Address", autofocus: true %>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui left icon input">
+                <i class ="lock icon"></i>
+                  <%= f.password_field :password, :placeholder => "Password *Minimum 6 characters*", autocomplete: "off" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui left icon input">
+                <i class ="lock icon"></i>            
+              <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation", autocomplete: "off" %>
+              </div>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Sign up", :class => "ui fluid large teal button" %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

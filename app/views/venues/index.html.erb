@@ -1,10 +1,39 @@
-<div id="latest_venue">
-	<p>
-		<strong>Latest Available Venues:</strong>
-			<% @venues.all.last(10).each do |v|%>
-			<ul>
-				<li><strong><%= v.venue_title %></strong><br /><%= v.address %><br /><br /><%= image_tag v.avatar :thumb %> <br /> <%= link_to "View Details >", venue_path(v.id) %></li>
-			</ul>
-			<% end %>
-	</p>
+<h2 class="ui dividing center aligned icon header">
+<i class="right aligned circular browser icon"></i>
+Latest Listings
+</h2>
+<div class="flexbox">
+  <div class="ui special cards">
+	<% @venues.all.last(9).each do |v| %>
+	  <div class="card">
+	    <div class="blurring dimmable image">
+	      <div class="ui dimmer">
+	        <div class="content">
+	          <div class="center">
+	            <div class="ui inverted button"><%= link_to "View Details >", venue_path(v.id) %></div>
+	          </div>
+	        </div>
+	      </div>
+	      <%= image_tag v.avatar :medium %>
+	    </div>
+	    <div class="content">
+	      <span class="header"><%= v.venue_title %></span>
+	      <div class="meta">
+	        <span class="date"><%= v.address %></span>
+	      </div>
+	    </div>
+	    <div class="extra content">
+	      <a>
+	        <i class="share icon"></i>
+	        <%= v.contact %>
+	      </a>
+	    </div>
+	  </div>
+	<% end %>
+  </div>
 </div>
+<script type="text/javascript">
+	$('.special.cards .image').dimmer({
+  on: 'hover'
+});
+</script>
