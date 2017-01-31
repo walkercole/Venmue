@@ -29,6 +29,10 @@
 			<%= f.label :venue_describe, "Description" %><br/>
 			<%= f.text_area :venue_describe, :placeholder => "Tell us about your establishment." %><br/><br/>
 		</div>
+		<div class="inline six wide field">
+			<%= f.label :capacity, "Capacity" %><br/>
+			<%= f.text_field :capacity, :placeholder => "Max Capacity" %><br/><br/>
+		</div>
 		<%= f.submit 'Create Venue', :class => "ui button" %>
 	<% end %>
 	</div>

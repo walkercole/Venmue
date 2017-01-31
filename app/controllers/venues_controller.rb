@@ -35,6 +35,7 @@ class VenuesController < ApplicationController
 	end
 	def edit
 		@venue = Venue.find(params[:id])
+		@location = request.location
 	end
 	def update
 
@@ -58,6 +59,6 @@ class VenuesController < ApplicationController
 	private
 
 		def venue_params
-			params.require(:venue).permit(:address, :venue_title, :venue_describe, :latitude, :longitude, :contact, :avatar, :user_id)
+			params.require(:venue).permit(:address, :venue_title, :venue_describe, :latitude, :longitude, :contact, :capacity, :avatar, :user_id)
 		end
 end

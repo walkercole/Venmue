@@ -89,7 +89,13 @@
   margin: 5% 5% 5% 15%;
   align-items: center;
 }
-
+#boxshadow {
+	box-shadow: 5px 5px 5px #888888;
+}
+#map {
+    height:300px;
+    width:450px;
+  }
 @-webkit-keyframes cf4FadeInOut {
  0% {
    opacity:1;

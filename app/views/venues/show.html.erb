@@ -1,18 +1,35 @@
 <h3> <%= @venue.venue_title %> </h3>
 <p>
 	<strong>Venue Name:</strong>
-	<%= @venue.venue_title %><br /><br />
-	<%= image_tag @venue.avatar :medium %><br /><br />
+	<%= @venue.venue_title %><br/><br/>
+	<%= image_tag @venue.avatar :medium %><br/><br/>
 
+	<strong>Capacity:</strong>
+	<%= @venue.capacity %><br/><br/>
 	<strong>Description:</strong>
-	<%= @venue.venue_describe %><br /><br />
+	<%= @venue.venue_describe %><br/><br/>
 
 	<strong>Venue Address:</strong>
-	<%= @venue.address %><br /><br />
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@venue.latitude}%2C#{@venue.longitude}" %><br /><br />
+	<%= @venue.address %><br/><br/>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var loc = {lat: <%= @venue.latitude %>, lng: <%= @venue.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: loc
+        });
+        var marker = new google.maps.Marker({
+          position: loc,
+          map: map
+        });
+      }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2TrwjQ1wChOBh-L1YXhSRkH3A5M0v5mw&callback=initMap">
+</script><br/><br/>
 
 	<strong>Contact Info: </strong>
-	<%= @venue.contact %><br /><br/ >
+	<%= @venue.contact %><br/><br/>
 
 	<% if current_user == @venue.user %>
 	<button><%= link_to "Edit Venue", edit_venue_path %></button>
@@ -28,7 +45,7 @@
 	 
 	  <p>
 	    <strong>Says:</strong>
-	    <%= review.body %><br />
+	    <%= review.body %><br/>
 	  </p>
 	  <p>
 	  <% if current_user == @venue.user %>

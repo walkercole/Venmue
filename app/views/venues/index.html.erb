@@ -5,7 +5,7 @@ Latest Listings
 <div class="flexbox">
   <div class="ui special cards">
 	<% @venues.all.last(9).each do |v| %>
-	  <div class="card">
+	  <div id="boxshadow" class="card">
 	    <div class="blurring dimmable image">
 	      <div class="ui dimmer">
 	        <div class="content">
@@ -24,8 +24,8 @@ Latest Listings
 	    </div>
 	    <div class="extra content">
 	      <a>
-	        <i class="share icon"></i>
-	        <%= v.contact %>
+	        <i class="users icon"></i>
+	       Capacity: <%= v.capacity %>
 	      </a>
 	    </div>
 	  </div>
