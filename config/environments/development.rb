@@ -1,4 +1,3 @@
-require 'spoof_ip'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -7,7 +6,6 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
   #spoof_ip workaround vvvvvv
-  config.middleware.use('SpoofIp', '96.83.106.161')
 
   # Do not eager load code on boot.
   config.eager_load = false

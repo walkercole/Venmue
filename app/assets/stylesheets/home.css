@@ -86,11 +86,18 @@
   flex-flow: column wrap;
   height: 950px;
   width: 80%;
-  margin: 5% 5% 5% 15%;
+  margin: 5% 5% 5% 10%;
   align-items: center;
+}
+.card .image {
+	height:200px;
+	overflow:hidden;
 }
 #boxshadow {
 	box-shadow: 5px 5px 5px #888888;
+}
+#boxshadow:hover {
+	box-shadow: 5px 10px 5px #888888;
 }
 #map {
     height:300px;

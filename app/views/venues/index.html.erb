@@ -3,14 +3,14 @@
 Latest Listings
 </h2>
 <div class="flexbox">
-  <div class="ui special cards">
+  <div class="ui fluid three special stackable link cards">
 	<% @venues.all.last(9).each do |v| %>
 	  <div id="boxshadow" class="card">
 	    <div class="blurring dimmable image">
 	      <div class="ui dimmer">
 	        <div class="content">
 	          <div class="center">
-	            <div class="ui inverted button"><%= link_to "View Details >", venue_path(v.id) %></div>
+	            <div><%= link_to "View Details >", venue_path(v.id), :class => "ui blue inverted button" %></div>
 	          </div>
 	        </div>
 	      </div>

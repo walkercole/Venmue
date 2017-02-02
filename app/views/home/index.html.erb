@@ -59,7 +59,6 @@
 <script>
 	var locations = <%= raw @locations.to_json %>;
 	function initMap() {
-    	var loc = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
     	var map = new google.maps.Map(document.getElementById('map'), {
       		zoom: 15,
     	});  
