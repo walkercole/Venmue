@@ -18,3 +18,6 @@ menu.ready = function() {
   ;
 };
 $(document).ready(menu.ready);
+$(document).ready(function(){
+    $(".rating").rating();
+});

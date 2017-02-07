@@ -1,79 +1,99 @@
-<h3> <%= @venue.venue_title %> </h3>
-<p>
-	<strong>Venue Name:</strong>
-	<%= @venue.venue_title %><br/><br/>
-	<%= image_tag @venue.avatar :medium %><br/><br/>
-
-	<strong>Capacity:</strong>
-	<%= @venue.capacity %><br/><br/>
-	<strong>Description:</strong>
-	<%= @venue.venue_describe %><br/><br/>
-
-	<strong>Venue Address:</strong>
-	<%= @venue.address %><br/><br/>
-</p>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var loc = {lat: <%= @venue.latitude %>, lng: <%= @venue.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: loc
-        });
-        var marker = new google.maps.Marker({
-          position: loc,
-          map: map
-        });
-      }
-    </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2TrwjQ1wChOBh-L1YXhSRkH3A5M0v5mw&callback=initMap">
-</script><br/><br/>
-<div class="ui secondary vertical pointing menu">
-  <a class="ui active item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
-  <a class="item">
-    Friends
-  </a>
+<h2 class="ui left aligned header"> <i class="blue bookmark outline icon"></i><%= @venue.venue_title %> </h2>
+<div id="widget">
+	<div id="venueImage" class="ui grid">
+		<%= image_tag @venue.avatar, :class => "ui left aligned fluid image" %><br/>
+		<i id="descIco" class="huge comments outline icon"><span>Description</span></i><br/><br/><br/>		
+		<h4 id="venueText"><%= @venue.venue_describe %></h4>
+	</div><br/>
+</div><br/>
+<h1 class="ui center aligned header">
+The Details
+</h1>
+<div class="ui divider"></div>
+<div class="ui grid">
+	<div class="two wide column"></div>
+	<div class="two wide column">
+		<h2 class="ui icon header">
+			<i class="blue users icon"></i>
+			<%= @venue.capacity %><br/>
+			<div class="sub header">
+				Capacity
+			</div>
+		</h2>
+	</div>
+	<div class="two wide column"></div>
+	<div class="four wide column">
+		<h2 class="ui icon header">
+			<i class="blue marker icon"></i>
+			Address
+			<div class="sub header">
+			<%= @venue.address %><br/><br/>
+			</div>
+		</h2>
+	</div>
+	<div class="two wide column"></div>
+	<div class="two wide column">
+		<h2 class="ui icon header">
+			<i class="blue phone icon"></i>
+			Address
+			<div class="sub header">
+			<%= @venue.contact %><br/><br/>
+			</div>
+		</h2>
+	</div>
 </div>
-	<strong>Contact Info: </strong>
-	<%= @venue.contact %><br/><br/>
-
-	<% if current_user == @venue.user %>
-	<button><%= link_to "Edit Venue", edit_venue_path %></button>
-	<% end %>
-
-	<h2>Reviews</h2>
-		<% @venue.reviews.each do |review| %>
-	  <p>
-
+<br/>
+<h2 class="ui center aligned icon header">
+	<i class="orange street view icon"></i>
+		Location
+</h2>
+<div id="showLocation"><br/><br/><br/>
+<div id="map"></div>
+<script>
+	function initMap() {
+		var loc = {lat: <%= @venue.latitude %>, lng: <%= @venue.longitude %>};
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 15,
+		  center: loc
+	});
+		var marker = new google.maps.Marker({
+		  position: loc,
+		  map: map
+	});
+	}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2TrwjQ1wChOBh-L1YXhSRkH3A5M0v5mw&callback=initMap">
+</script>
+</div><br/>
+<% if current_user == @venue.user %>
+	<%= link_to "Edit Venue", edit_venue_path, :class => "ui button" %>
+   	<%= link_to 'Delete Venue', venue_path, :class => "ui button", method: :delete, data: { confirm:'Are you sure?' } %> 
+<% end %>
+<h2 class="ui center aligned icon header">
+	<i class="leanpub icon"></i>
+		Reviews
+</h2>
+<div class="ui divider"></div>
+	<% @venue.reviews.each do |review| %>
+  	<p>
 	    <strong>Review by:</strong>
 	    <%= review.reviewer %>
-	  </p>
-	 
-	  <p>
+  	</p>
+  	<p>
 	    <strong>Says:</strong>
 	    <%= review.body %><br/>
-	  </p>
-	  <p>
+  	</p>
+  	<p>
 	  <% if current_user == @venue.user %>
-	  <button><%= link_to 'Delete Review', [review.venue, review],
+	  <%= link_to 'Delete Review', [review.venue, review], :class => "ui button",
 	               method: :delete,
-	               data: { confirm: 'Are you sure?' } %></button><br/><br/><br/>
+	               data: { confirm: 'Are you sure?' } %><br/><br/><br/>
        <% end %>
-       <% end %>
-       <% if current_user == @venue.user %>
-       <button><%= link_to 'Delete Venue', venue_path, 
-       				method: :delete,
-              		data: { confirm: 'Are you sure?' } %></button> 
        <% end %>
 	</p>
 	<% if current_user %>
 		<h2>Add a review:</h2>
-				<%= form_for([@venue, @venue.reviews.build]) do |f| %>
+		<%= form_for([@venue, @venue.reviews.build]) do |f| %>
 		  <p>
 		    <%= f.label :reviewer %><br>
 		    <%= f.text_field :reviewer %>
@@ -83,7 +103,7 @@
 		    <%= f.text_area :body %>
 		  </p>
 		  <p>
-		    <%= f.submit %>
+		    <%= f.submit :class => "ui button" %>
 		  </p>
 		<% end %>
 	<% end %>

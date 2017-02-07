@@ -17,14 +17,14 @@
   <div class="item">
     <i class="right triangle icon"></i>
     <div class="content">
-      <div class="header">Search your desired area</div>
+      <div class="header"><i class="search icon"></i>Search your desired area</div>
       <div class="description">Enter your destination into the search bar ( i.e. Washington, DC ) and find venues nearby!</div>
     </div>
   </div>
  <div class="item">
     <i class="right triangle icon"></i>
     <div class="content">
-      <div class="header">Find your perfect venue</div>
+      <div class="header"><i class="map signs icon"></i>Find your perfect venue</div>
       <div class="description">Once you have found a venue that suits your needs, contact the venue through their listed <br/> contact info on the venue's page. They will be in touch shortly after!</div>
     </div>
   </div>
@@ -37,14 +37,14 @@
   <div class="item">
     <i class="right triangle icon"></i>
     <div class="content">
-      <div class="header">List your venue</div>
+      <div class="header"><i class="edit icon"></i>List your venue</div>
       <div class="description">Travel to the list venue page and enter your establishment's information, providing a description <br/> and respected contact info.</div>
     </div>
   </div>
  <div class="item">
     <i class="right triangle icon"></i>
     <div class="content">
-      <div class="header">Connect with customers</div>
+      <div class="header"><i class="mail icon"></i>Connect with customers</div>
       <div class="description">Once your venue is listed - your establishment will be posted to our database where customers <br/> can browse and hopefully select your venue for buisness. <br/> Through your contact info you provide customers will get in touch with you.</div>
     </div>
   </div>
@@ -55,11 +55,11 @@
   	<i class="circular search icon"></i>
   	Locations Nearby
 	</h2>
-<div id="map"></div>
+<div id="mapHome"></div>
 <script>
 	var locations = <%= raw @locations.to_json %>;
 	function initMap() {
-    	var map = new google.maps.Map(document.getElementById('map'), {
+    	var map = new google.maps.Map(document.getElementById('mapHome'), {
       		zoom: 15,
     	});  
 	 	if (navigator.geolocation) {

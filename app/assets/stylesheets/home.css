@@ -1,25 +1,54 @@
 #obutton {
-	margin-top: 15px;
-	margin-left: 1%;
-	float:right;
+margin-top: 15px;
+margin-left: 1%;
+float:right;
 }
 #searching {
-	margin-top: 15px;
-	margin-left: 67%;
-	position: absolute;
+margin-top: 15px;
+margin-left: 67%;
+position: absolute;
 }
 #searchtext {
-	margin-top: 23px;
-	margin-left: 55%;
+margin-top: 23px;
+margin-left: 55%;
+position: absolute;
+}
+#venueImage {
+width:55%;
+height:100%;
+position: relative;
+}
+#venueText {
+height:50%;
+width:70%;
+position:absolute;
+color:skyblue;
+font-size: 16px;
+float:right;
+overflow-y: scroll;
+}
+#descIco {
+	color:white;
 	position: absolute;
 }
+#descIco span {
+	font-size: 35px;
+	margin-left: 10px;
+	font-family: lato;
+}
+#widget {
+	background-color: #2e3236;
+	box-shadow:5px 5px 5px black;
+	width:100%;
+	height:65.5%;
+}
 #logo {
-	width:80px;
-	height:70px;
-	margin-left: 88%;
-	margin-top: 10px;
-	margin-bottom: -8px;
-	position: absolute;
+width:80px;
+height:70px;
+margin-left: 88%;
+margin-top: 10px;
+margin-bottom: -8px;
+position: absolute;
 /*	background-image: url("/venmuelogo.jpg");*/
 }
 #logo {
@@ -39,6 +68,7 @@
 #header_text2 {
 	margin-left: 24%;
 	margin-top: 20%;
+	position: absolute;
 }
 #headericon {
 	float:left;
@@ -53,6 +83,13 @@
 	position:absolute;
 	margin-left: 55%;
 	margin-top: -37%;
+	height:300px;
+	width:510px;
+}
+#showLocation {
+	height:100%;
+	width:100%;
+	background-color: #2e3236;
 }
 
 .headerDivider {
@@ -92,6 +129,7 @@
 .card .image {
 	height:200px;
 	overflow:hidden;
+	cursor:default;
 }
 #boxshadow {
 	box-shadow: 5px 5px 5px #888888;
@@ -100,9 +138,15 @@
 	box-shadow: 5px 10px 5px #888888;
 }
 #map {
-    height:300px;
-    width:450px;
+    height:80%;
+    width:80%;
+    margin:auto;
+    box-shadow: 5px 5px 10px 8px black;
   }
+#mapHome {
+	height:100%;
+	width:100%;
+}
 @-webkit-keyframes cf4FadeInOut {
  0% {
    opacity:1;
