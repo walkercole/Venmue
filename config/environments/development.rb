@@ -10,6 +10,16 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV.fetch('venmue'),
+      access_key_id: ENV.fetch('AKIAID5JRQCXZ7QX4ZLQ'),
+      secret_access_key: ENV.fetch('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'),
+      s3_region: ENV.fetch('US Standard'),
+    }
+  }
+  
   # Show full error reports.
   config.consider_all_requests_local = true
 
