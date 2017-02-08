@@ -143,6 +143,18 @@ position: absolute;
 	overflow:hidden;
 	cursor:default;
 }
+#allbutton {
+  margin-left:45%;
+  float:bottom;
+  margin-top: 3%;
+} 
+#reviewForm {
+  margin-left: 38%;
+  margin-right: -40%;
+}
+#reviewHead {
+  margin-left:6%; 
+}
 #boxshadow {
 	box-shadow: 5px 5px 5px #888888;
 }

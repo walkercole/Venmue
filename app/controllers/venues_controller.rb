@@ -2,6 +2,13 @@ class VenuesController < ApplicationController
 	def new
 		@venue = Venue.new
 	end
+	def all
+		@venues = if params[:search].present?
+			Venue.near(params[:search], 50)
+		else
+			Venue.all
+		end
+	end
 	def create
 		@venue = current_user.venues.new(venue_params)
 

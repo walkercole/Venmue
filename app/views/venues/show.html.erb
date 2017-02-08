@@ -97,23 +97,25 @@ The Details
 	</p>
 	<div id="reviews">
 	<% if current_user %>
-<div class="ui divider"></div>	
-		<h2 class="icon header">
-			<i class="edit icon"></i>
-			Add a review:
-		</h2>
-		<div class="ui form">
-			<%= form_for([@venue, @venue.reviews.build]) do |f| %>
-				<div class="four wide field">
-				    <%= f.label :reviewer %>
-				    <%= f.text_field :reviewer, :placeholder => "Name" %>
-			  	</div>
-			  	<div class="four wide field">
-				    <%= f.label :body %>
-				    <%= f.text_area :body, :placeholder => "Review" %>
-				</div>
-			    <%= f.submit :class => "ui blue submit button" %>
-			<% end %>
-		</div>
+<div class="ui divider"></div>
+<div id="reviewForm">	
+	<h2 id="reviewHead" class="ui icon header">
+		<i class="edit icon"></i>
+		Add a review:
+	</h2>
+	<div class="ui form">
+		<%= form_for([@venue, @venue.reviews.build]) do |f| %>
+			<div class="four wide field">
+			    <%= f.label :reviewer %>
+			    <%= f.text_field :reviewer, :placeholder => "Name" %>
+		  	</div>
+		  	<div class="four wide field">
+			    <%= f.label :body %>
+			    <%= f.text_area :body, :placeholder => "Review" %>
+			</div>
+		    <%= f.submit :class => "ui blue submit button" %>
+		<% end %>
+	</div>
 	<% end %>
 	</div><br/>
+</div>

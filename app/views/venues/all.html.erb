@@ -1,10 +1,10 @@
 <h2 class="ui dividing center aligned icon header">
 <i class="right aligned circular browser icon"></i>
-Latest Listings
+All Listings
 </h2>
 <div class="ui container">
   <div class="ui fluid three special stackable link cards">
-	<% @venues.all.last(9).each do |v| %>
+	<% @venues.all.each do |v| %>
 	  <div id="boxshadow" class="card">
 	    <div class="blurring dimmable image">
 	      <div class="ui dimmer">
@@ -32,14 +32,6 @@ Latest Listings
 	<% end %>
   </div>
 </div>
-<div class="ui container">
-	<a href="/all"><div id="allbutton" class="ui blue animated fade button" tabindex="0">
-	  <div class="visible content">Show All Venues</div>
-	  <div class="hidden content">
-	    <i class="large arrow down icon"></i>
-	  </div>
-	</div></a>
-</div><br/>
 <script type="text/javascript">
 	$('.special.cards .image').dimmer({
   on: 'hover'
