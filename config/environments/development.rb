@@ -9,7 +9,7 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-
+#VVV AWS
 config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
