@@ -10,85 +10,91 @@
 	<img id="cfimg" src="/fader_2.jpg"/>
 	<img id="cfimg" src="/fader_3.jpg"/>
 	<img id="cfimg" src="/fader_4.jpg"/>
-</div>
-
-<h2 id="icontext" class="ui left aligned dividing icon header">
-	<i id="headericon" class="left aligned users icon"></i><br/><br/>
-	How it works 
-</h2>
-<div class="ui list">
-  <div class="item">
-    <i class="right triangle icon"></i>
-    <div class="content">
-      <div class="header"><i class="search icon"></i>Search your desired area</div>
-      <div class="description">Enter your destination into the search bar ( i.e. Washington, DC ) and find venues nearby!</div>
+</div><br/>
+  <h2 class="ui center aligned blue icon header">
+    <i class="users icon"></i><br/>
+      Are you looking for a venue?
+  </h2><br/>
+<div class="ui center aligned grid">
+  <div class="ui horizontal list">
+    <div class="item">
+      <i class="share icon"></i>
+      <div class="content">
+        <h2 class="ui dividing header"><i class="search icon"></i>Search your desired area</h2>
+        <div class="description">Use the Local Venues map or enter your destination into the search bar ( i.e. Washington, DC )<br/> and find venues nearby!</div>
+      </div>
+    </div>
+   <div class="item">
+      <i class="share icon"></i>
+      <div class="content">
+        <h2 class="ui dividing header"><i class="map signs icon"></i>Find your perfect venue</h2>
+        <div class="description">Once you have found a venue that suits your needs, contact the venue through their listed <br/> contact info on the venue's page. They will be in touch shortly after!</div>
+      </div>
     </div>
   </div>
- <div class="item">
-    <i class="right triangle icon"></i>
-    <div class="content">
-      <div class="header"><i class="map signs icon"></i>Find your perfect venue</div>
-      <div class="description">Once you have found a venue that suits your needs, contact the venue through their listed <br/> contact info on the venue's page. They will be in touch shortly after!</div>
+</div><br/>
+<br/><div class="ui horizontal divider"> or </div><br/>
+<h2 class="ui center aligned blue icon header">
+  <i class="blue add user icon"></i><br/>
+    Are you a venue owner?
+</h2><br/>
+<div class="ui center aligned grid">
+  <div class="ui horizontal list">
+    <div class="item">
+      <i class="share icon"></i>
+      <div class="content">
+        <h2 class="ui dividing header"><i class="edit icon"></i>List your venue</h2>
+        <div class="description">Travel to the list venue page and enter your establishment's information, providing a description <br/> and relevant contact info.</div>
+      </div>
+    </div>
+   <div class="item">
+      <i class="share icon"></i>
+      <div class="content">
+        <h2 class="ui dividing header"><i class="mail icon"></i>Connect with customers</h2>
+        <div class="description">Once your venue is listed - your establishment will be posted to our database where customers <br/> can browse and select your venue for buisness. Through your contact info<br/> you provide customers will get in touch with you.</div>
+      </div>
     </div>
   </div>
-</div>
-<h2 id="icontext" class="ui left aligned dividing icon header">
-	<i id="headericon" class="left aligned add user icon"></i><br/><br/>
-	Are you a venue owner? 
-</h2>
-<div class="ui list">
-  <div class="item">
-    <i class="right triangle icon"></i>
-    <div class="content">
-      <div class="header"><i class="edit icon"></i>List your venue</div>
-      <div class="description">Travel to the list venue page and enter your establishment's information, providing a description <br/> and respected contact info.</div>
-    </div>
+</div><br/><br/>
+<div class="ui divider"></div><br/><a id="home"></a>
+<div class="ui center aligned grid">
+  <div id="mymap">
+  	<h2 class="ui center aligned icon header">
+    	<i class="circular blue search icon"></i>
+    	Locations Nearby
+  	</h2>
+  <div id="mapHome"></div><br/><br/>
+   <a href="#top"><i id="up" class="circular huge center aligned blue double angle up icon"></i></a>
+  <script>
+  	var locations = <%= raw @locations.to_json %>;
+  	function initMap() {
+      	var map = new google.maps.Map(document.getElementById('mapHome'), {
+        		zoom: 15,
+      	});  
+  	 	if (navigator.geolocation) {
+  	    	navigator.geolocation.getCurrentPosition(function (position) {
+  	        	initialLocation = new google.maps.LatLng(
+  	        		position.coords.latitude,
+  	        		position.coords.longitude
+  	        	);
+  	        	map.setCenter(initialLocation);
+  	     	});
+  	 	}    
+    		locations.forEach(function(location){   
+      		var marker = new google.maps.Marker({
+        			position: {lat: location.latitude, lng: location.longitude},
+        			map: map
+  		    });  
+      		var infowindow = new google.maps.InfoWindow({
+        			content: "<b>" + location.venue_title + "</b>" + " <br/><br/>" + location.venue_describe + "<br/><br/>" + location.address + "<br/>" + `<a href='/venues/${location.id}'> View Venue </a>`
+      		});     
+  			marker.addListener('click', function() {
+  				infowindow.open(map, marker);
+  			});    
+  		});
+  	}
+  </script>
   </div>
- <div class="item">
-    <i class="right triangle icon"></i>
-    <div class="content">
-      <div class="header"><i class="mail icon"></i>Connect with customers</div>
-      <div class="description">Once your venue is listed - your establishment will be posted to our database where customers <br/> can browse and hopefully select your venue for buisness. <br/> Through your contact info you provide customers will get in touch with you.</div>
-    </div>
-  </div>
-</div>
-<a id="home"></a>
-<div class="headerDivider"></div>
-<div id="mymap">
-	<h2 class="ui center aligned icon header">
-  	<i class="circular search icon"></i>
-  	Locations Nearby
-	</h2>
-<div id="mapHome"></div>
-<script>
-	var locations = <%= raw @locations.to_json %>;
-	function initMap() {
-    	var map = new google.maps.Map(document.getElementById('mapHome'), {
-      		zoom: 15,
-    	});  
-	 	if (navigator.geolocation) {
-	    	navigator.geolocation.getCurrentPosition(function (position) {
-	        	initialLocation = new google.maps.LatLng(
-	        		position.coords.latitude,
-	        		position.coords.longitude
-	        	);
-	        	map.setCenter(initialLocation);
-	     	});
-	 	}    
-  		locations.forEach(function(location){   
-    		var marker = new google.maps.Marker({
-      			position: {lat: location.latitude, lng: location.longitude},
-      			map: map
-		    });  
-    		var infowindow = new google.maps.InfoWindow({
-      			content: "<b>" + location.venue_title + "</b>" + " <br/><br/>" + location.venue_describe + "<br/><br/>" + location.address + "<br/>" + `<a href='/venues/${location.id}'> View Venue </a>`
-    		});     
-			marker.addListener('click', function() {
-				infowindow.open(map, marker);
-			});    
-		});
-	}
-</script>
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2TrwjQ1wChOBh-L1YXhSRkH3A5M0v5mw&callback=initMap">
 </script>

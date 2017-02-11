@@ -9,40 +9,49 @@
 <h1 class="ui center aligned header">
 The Details
 </h1>
-<div class="ui divider"></div>
-<div class="ui grid">
-	<div class="two wide column"></div>
-	<div class="two wide column">
-		<h2 class="ui icon header">
-			<i class="blue users icon"></i>
-			<%= @venue.capacity %><br/>
-			<div class="sub header">
-				Capacity
-			</div>
-		</h2>
-	</div>
-	<div class="two wide column"></div>
-	<div class="four wide column">
-		<h2 class="ui icon header">
-			<i class="blue marker icon"></i>
-			Address
-			<div class="sub header">
-			<%= @venue.address %><br/><br/>
-			</div>
-		</h2>
-	</div>
-	<div class="two wide column"></div>
-	<div class="two wide column">
-		<h2 class="ui icon header">
-			<i class="blue phone icon"></i>
-			Contact
-			<div class="sub header">
-			<%= @venue.contact %><br/><br/>
-			</div>
-		</h2>
-	</div>
-</div>
-<br/>
+<div class="ui divider"></div><br/>
+<div class="ui container"></div>
+      <div class="ui two item fluid tabs menu"><a data-tab="flip left" class="item">Left</a><a data-tab="flip right" class="item">Right</a></div><br/>
+      <div class="ui five column centered grid">
+        <div class="ui center aligned column">
+          <div class="ui cube shape">
+            <div class="sides">
+              <div class="side active">
+                <div class="content">
+                  <div class="center">
+                  	<i class="large blue users icon"></i><br/><br/>
+                  	<div class="sub header">Capacity</div><br/>
+                  	<%= @venue.capacity %>
+                  </div>
+                </div>
+              </div>
+              <div class="side">
+                <div class="content">
+                  <div class="center">
+                  	<i class="large blue marker icon"></i><br/>
+                  	<div id="address" class="sub header">Address </div>
+                  	<h5><%= @venue.address %></h5>
+                  </div>
+                </div>
+              </div>
+              <div class="side">
+                <div class="content">
+                  <div class="center">
+                  	<i class="large blue phone icon"></i><br/><br/>
+                  	<div class="sub header">Contact </div>
+                  	<h3> <%= @venue.contact %> </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui column"></div>
+        <div class="ui column">
+		<iframe src="//www.availabilitycalendar.com/embed/yX7fVKrX8ol2JEMyHmG4eMKksq4TtI-7wDfQn2g4Lnw/en-1-1-1-1-0-0-0-0-0-0-0-1-0/" height="100%" width="150%" frameborder="0" allowtransparency="true"></iframe>  
+		</div>
+      </div>
+<br/><br/><br/>
 <h2 class="ui center aligned icon header">
 	<i class="orange street view icon"></i>
 		Location
@@ -68,6 +77,7 @@ The Details
 <% if current_user == @venue.user %>
 	<%= link_to "Edit Venue", edit_venue_path, :class => "ui button" %>
    	<%= link_to 'Delete Venue', venue_path, :class => "ui button", method: :delete, data: { confirm:'Are you sure?' } %> 
+   	<a href="https://www.availabilitycalendar.com/manage/edit-calendar/WdITMJK56JCq6GVoGuD6/" target="_blank"><div class="ui button">Edit Calendar</div></a>
 <% end %>
 <h2 class="ui center aligned icon header">
 	<i class="leanpub icon"></i>
