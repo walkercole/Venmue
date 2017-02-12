@@ -54,12 +54,4 @@ $menuParent.append( $menus );
     $box.shape(tabId);
   })
 ;
-  
-  $innerSquare
-       .mouseover('$flip', function() {
-    $box.shape('flip left');
-    })
-  ;
-  
-  
 });

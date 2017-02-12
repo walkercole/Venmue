@@ -80,7 +80,7 @@ position: absolute;
   margin-top:90px;
 }
 #up {
-  margin-left:45%;
+  margin-left:50%;
   margin-right: 50%;
 }
 #headericon {
@@ -180,7 +180,13 @@ position: absolute;
 	width:100%;
   border:2px solid black;
   box-shadow: 5px 10px 5px #888888;
+  overflow: none;
 }
+#mapHome:hover{ 
+  position: relative; 
+ top: -5px;
+ box-shadow: 10px 10px 10px #888888;
+} 
 @-webkit-keyframes cf4FadeInOut {
  0% {
    opacity:1;
