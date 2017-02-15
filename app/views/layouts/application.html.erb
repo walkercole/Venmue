@@ -21,18 +21,21 @@
         <div class="visible content">Home</div><div class="hidden content"><i class="large home icon"></i></div></button></div></a>
       </div>
       <div class="two wide column">
-        <a href="/venues"><div id="obutton"><button class="ui button">Venues</button></div></a>
+        <a href="/venues"><div id="obutton"><button class="ui animated fade button" tabindex="0">
+        <div class="visible content">Venues</div><div class="hidden content"><i class="large newspaper icon"></i></div></button></div></a>
       </div>
         <% if current_user %>
       <div class="two wide column">
-        <a href="/venues/new"><div id="obutton"><button class="ui button">List Venue</button></div></a>
+        <a href="/venues/new"><div id="obutton"><button class="ui animated fade button" tabindex="0">
+        <div class="visible content">Post Venue</div><div class="hidden content"><i class="large edit icon"></i></div></button></div></a>
       </div>
       <div class="two wide column">
-        <div id="obutton"><%= button_to 'Sign out',  destroy_user_session_path, :class => "ui button", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <div id="obutton"><%= button_to 'Sign out',  destroy_user_session_path, :id => "butt", :class => "ui button", method: :delete, data: { confirm: 'Are you sure?' } %></div>
       </div>
         <% else %>
       <div class="two wide column">
-        <a href="/users/sign_in"><div id="obutton"><button class="ui button">Sign in</button></a></div>
+        <a href="/users/sign_in"><div id="obutton"><button class="ui animated fade button" tabindex="0">
+        <div class="visible content">Sign In</div><div class="hidden content"><i class="large sign in icon"></i></div></button></a></div>
       </div>
         <% end %>
       <p id="searchtext"> Find a venue nearby! </p>
